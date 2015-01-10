@@ -2,6 +2,7 @@ package edu.hackathon.wear.wear;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.wearable.view.WatchViewStub;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,10 @@ public class AlertActivity extends Activity {
                 TextView mTextView = (TextView) stub.findViewById(R.id.text);
                 //TextView text = (TextView) findViewById(R.id.this_is_the_id_of_textview);
                 mTextView.setText("alert");
+
+                Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                if (vibrator != null)
+                    vibrator.vibrate(400);
             }
 
         });

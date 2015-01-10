@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
                 mTextView = (TextView) stub.findViewById(R.id.text);
 
                 //TextView text = (TextView) findViewById(R.id.this_is_the_id_of_textview);
-                mTextView.setText("test");
+                mTextView.setText("Remind Me App");
                 /*context = getActivity();
 
                 alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
@@ -58,7 +58,9 @@ public class MainActivity extends Activity {
                 cal.add(Calendar.SECOND,  alarmInterval);
                 //registering our pending intent with alarmmanager
                 AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-                am.set(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), pi);
+                //am.set(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), pi);
+                am.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+                        1000 * alarmInterval, pi);
 
             }
         });
