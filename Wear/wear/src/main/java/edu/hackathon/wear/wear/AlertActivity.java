@@ -6,6 +6,8 @@ import android.os.Vibrator;
 import android.support.wearable.view.WatchViewStub;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -15,17 +17,27 @@ public class AlertActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button button;
         final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 TextView mTextView = (TextView) stub.findViewById(R.id.text);
                 //TextView text = (TextView) findViewById(R.id.this_is_the_id_of_textview);
-                mTextView.setText("alert");
+                mTextView.setText("Take Your Pill");
 
                 Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
                 if (vibrator != null)
                     vibrator.vibrate(400);
+
+                Button button = (Button) stub.findViewById(R.id.dismiss_btn);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                            //MainActivity.cancelAlarm();
+                        System.exit(0);
+                }
+                });
             }
 
         });

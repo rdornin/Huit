@@ -3,6 +3,7 @@
     package="edu.hackathon.wear.wear" >
 
     <uses-feature android:name="android.hardware.type.watch" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -22,6 +23,10 @@
         <activity
             android:name=".AlertActivity"
             android:label="@string/title_activity_alert" >
+        </activity>
+        <activity
+            android:name=".activity_dismiss"
+            android:label="@string/title_activity_activity_dismiss" >
         </activity>
     </application>
 
