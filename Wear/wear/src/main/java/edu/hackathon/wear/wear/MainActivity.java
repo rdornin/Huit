@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
 import android.widget.TextView;
 
+import edu.hackathon.wear.service.AlarmService;
+
 public class MainActivity extends Activity {
 
     private TextView mTextView;
@@ -18,6 +20,10 @@ public class MainActivity extends Activity {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 mTextView = (TextView) stub.findViewById(R.id.text);
+
+                // get the alarm interval and display
+                int alarmInterval = AlarmService.getAlarmService().getSecondsInterval();
+                mTextView.setText("Interval is: " + alarmInterval);
             }
         });
     }
