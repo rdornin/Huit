@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
                 int alarmInterval = AlarmService.getAlarmService().getSecondsInterval();
                 //mTextView.setText("Interval is: " + alarmInterval);
 
-                Intent i = new Intent(getApplicationContext(), AlertActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 pi = PendingIntent.getActivity(getApplicationContext(),3333,i,
                         PendingIntent.FLAG_CANCEL_CURRENT);
 
@@ -58,9 +58,9 @@ public class MainActivity extends Activity {
                 cal.add(Calendar.SECOND,  alarmInterval);
                 //registering our pending intent with alarmmanager
                 am = (AlarmManager) getSystemService(ALARM_SERVICE);
-                //am.set(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), pi);
-                am.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
-                        1000 * alarmInterval, pi);
+                am.set(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), pi);
+                //am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+                       // 1000 * alarmInterval, pi);
 
             }
         });
