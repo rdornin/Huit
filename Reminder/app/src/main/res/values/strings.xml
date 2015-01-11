@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Reminder</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="enter">Enter Num Less Than 6:</string>
+    <string name="create">Create Task!</string>
+    <string name="title">Create a Reminder App</string>
+    <string name="hello_square">Hello Square World!</string>
+
+</resources>
