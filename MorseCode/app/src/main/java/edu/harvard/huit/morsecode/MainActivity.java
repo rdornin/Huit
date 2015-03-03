@@ -25,9 +25,9 @@ public class MainActivity extends Activity {
     private Integer counter = 0;
     private Integer timeLimit;
 
-    private void pause(){
+    private void pause(Integer timeLimit){
         try {
-            Thread.sleep(300);                 //1000 milliseconds is one second.
+            Thread.sleep(timeLimit);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
@@ -86,10 +86,11 @@ public class MainActivity extends Activity {
                                                                  morseCodeMap.put("8", "_ _ _ . .");
                                                                  morseCodeMap.put("9", "_ _ _ _ .");
                                                                  morseCodeMap.put("0", "_ _ _ _ _");
+                                                                 morseCodeMap.put(" ", "x");
 
-                                                                 String punctuations = ".,:; +)(^&%$#@!*{}[]";
+                                                                 String punctuations = ".,:;+)(^&%$#@!*{}[]";
                                                                  String str = mEnter.getText().toString();
-                                                                 str = str.replaceAll("\\s", ""); //stripping spaces for now
+                                                                 //str = str.replaceAll("\\s", ""); //stripping spaces for now
                                                                  String tmp;
                                                                  Context context = getApplicationContext();
                                                                  int duration = Toast.LENGTH_SHORT;
@@ -112,19 +113,25 @@ public class MainActivity extends Activity {
                                                                          String code = morseCodeMap.get(tmp);
                                                                          final Integer dot = 200;
                                                                          final Integer dash = 500;
+                                                                         final Integer space = 350;
                                                                          for (int j = 0; j < code.length(); j++) {
                                                                              String morseChar = Character.toString(code.charAt(j));
                                                                              System.out.println("Morse split:" + morseChar);
-                                                                             pause();
                                                                              if (morseChar.equals("_")) {
+                                                                                 pause(space);
                                                                                  Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                                                                                  v.vibrate(dash);
+                                                                                 pause(dash);
+                                                                             } else if (morseChar.equals("x")) {
+                                                                                 pause(space);
                                                                              } else if (morseChar.equals(".")) {
+                                                                                 pause(space);
                                                                                  Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                                                                                  v.vibrate(dot);
+                                                                                 pause(dot);
                                                                              }
-                                                                             pause();
                                                                          }
+                                                                         pause(space);
                                                                      }
                                                                  } else {
                                                                      CharSequence text = "No punctuation please.";
